@@ -6,9 +6,9 @@ def mostrar_inventario(inventario):
 
 def main():
     inventario = {
-        '001': {'nombre': 'Leche', 'existencias': 10, 'precio': 1.5},
-        '002': {'nombre': 'Pan', 'existencias': 20, 'precio': 1.0},
-        '003': {'nombre': 'Huevos', 'existencias': 30, 'precio': 2.0},
+        '001': {'nombre': 'azucar', 'existencias': 10, 'precio': 1.5},
+        '002': {'nombre': 'Cafe', 'existencias': 20, 'precio': 1.0},
+        '003': {'nombre': 'Pollo', 'existencias': 30, 'precio': 2.0},
     }
 
     while True:
