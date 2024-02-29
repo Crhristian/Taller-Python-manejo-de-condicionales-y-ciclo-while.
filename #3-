@@ -1,0 +1,43 @@
+def mostrar_inventario(inventario):
+    print("Inventario actual:")
+    print("Código\tNombre\tExistencias\tPrecio Unitario")
+    for codigo, producto in inventario.items():
+        print(f"{codigo}\t{producto['nombre']}\t{producto['existencias']}\t\t{producto['precio']}")
+
+def main():
+    inventario = {
+        '001': {'nombre': 'Leche', 'existencias': 10, 'precio': 1.5},
+        '002': {'nombre': 'Pan', 'existencias': 20, 'precio': 1.0},
+        '003': {'nombre': 'Huevos', 'existencias': 30, 'precio': 2.0},
+    }
+
+    while True:
+        print("\n1. Mostrar inventario")
+        print("2. Registrar compra")
+        print("3. Registrar venta")
+        print("4. Salir")
+        opcion = input("Seleccione una opción: ")
+
+        if opcion == "1":
+            mostrar_inventario(inventario)
+        elif opcion == "2" or opcion == "3":
+            codigo = input("Ingrese el código del producto: ")
+            if codigo in inventario:
+                cantidad = int(input(f"Ingrese la cantidad {'comprada' if opcion == '2' else 'vendida'}: "))
+                if opcion == '2':
+                    inventario[codigo]['existencias'] += cantidad
+                    print(f"Se han registrado {cantidad} unidades de {inventario[codigo]['nombre']}.")
+                elif cantidad <= inventario[codigo]['existencias']:
+                    inventario[codigo]['existencias'] -= cantidad
+                    print(f"Se han vendido {cantidad} unidades de {inventario[codigo]['nombre']}.")
+                else:
+                    print("No hay suficientes existencias para realizar la venta.")
+            else:
+                print("El producto no está en el inventario.")
+        elif opcion == "4":
+            break
+        else:
+            print("Opción inválida. Por favor, seleccione una opción válida.")
+
+if __name__ == "__main__":
+    main()
