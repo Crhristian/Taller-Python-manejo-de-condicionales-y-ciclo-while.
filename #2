@@ -1,0 +1,46 @@
+
+PRECIOS = {
+    "Computador de escritorio": 800,
+    "Tabletas": 300,
+    "Videobeam": 500,
+    "Televisores": 1000
+}
+
+def main():
+    compras = {producto: 0 for producto in PRECIOS}
+
+  
+    while True:
+        print("Productos disponibles:")
+        for i, producto in enumerate(PRECIOS, start=1):
+            print(f"{i}. {producto}")
+
+        opcion = input("Ingrese el número del producto que desea agregar (o 'F' para facturar): ")
+
+        
+        if opcion.upper() == 'F':
+            break
+
+      
+        if opcion.isdigit() and 1 <= int(opcion) <= len(PRECIOS):
+            indice_producto = int(opcion) - 1
+            producto_seleccionado = list(PRECIOS.keys())[indice_producto]
+
+           
+            compras[producto_seleccionado] += 1
+            print(f"Se ha agregado {producto_seleccionado}.")
+
+        else:
+            print("Opción inválida. Por favor, seleccione un número de producto válido.")
+
+ 
+    total_a_pagar = sum(compras[producto] * PRECIOS[producto] for producto in PRECIOS)
+    
+    print("\nFactura:")
+    for producto, cantidad in compras.items():
+        print(f"{cantidad} {producto} - ${cantidad * PRECIOS[producto]}")
+    
+    print(f"\nTotal a pagar: ${total_a_pagar}")
+
+if __name__ == "__main__":
+    main()
